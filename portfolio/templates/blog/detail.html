@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load portfolio_extras %}
+{% block title %}{{ post.title }} — {{ SITE_NAME }}{% endblock %}
+{% block extra_json_ld %}
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BlogPosting",
+ "headline": "{{ post.title|escapejs }}",
+ "description": "{{ post.summary|escapejs }}",
+ "datePublished": "{{ post.published|date:'c' }}",
+ "author": { "@type": "Person", "name": "Alex Doe" },
+ "url": "https://{{ SITE_DOMAIN }}{{ post.get_absolute_url }}"
+}
+</script>
+{% endblock %}
+{% block content %}
+<article class="post">
+  <h1>{{ post.title }}</h1>
+  <div class="meta">{{ post.published|date:"M j, Y" }} • {{ post.reading_time_minutes }} min read</div>
+  <div class="content">{{ post.content_markdown|markdown_safe|safe }}</div>
+</article>
+{% endblock %}

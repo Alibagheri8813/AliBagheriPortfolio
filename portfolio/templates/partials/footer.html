@@ -1,0 +1,9 @@
+<footer class="footer">
+  <div class="wrap">
+    <div>© <span id="y"></span> {{ SITE_NAME }}</div>
+    <div>
+      <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>
+    </div>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</footer>

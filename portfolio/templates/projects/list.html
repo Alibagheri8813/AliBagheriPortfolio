@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Projects — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<section class="section">
+  <h1>Projects</h1>
+  <form method="get" role="search" style="margin:10px 0;">
+    <input name="q" value="{{ q }}" placeholder="Search projects..." aria-label="Search projects">
+    <button class="btn">Search</button>
+  </form>
+  <div style="margin:10px 0;">
+    <a href="/projects/" class="badge">All</a>
+    {% for t in tags %}
+      <a class="badge {% if t.slug == active_tag %}active{% endif %}" href="?tag={{ t.slug }}">{{
+      t.name }}</a>
+    {% endfor %}
+  </div>
+  <div class="grid">
+    {% for p in projects %}
+    <a class="card" href="{{ p.get_absolute_url }}" data-project-slug="{{ p.slug }}" data-url="{{ p.get_absolute_url }}">
+      <img src="{{ p.hero_image_url }}" alt="{{ p.title }}" loading="lazy" decoding="async" />
+      <div class="title">{{ p.title }}</div>
+      <div class="meta">{{ p.summary }}</div>
+    </a>
+    {% empty %}
+    <p>No projects found.</p>
+    {% endfor %}
+  </div>
+</section>
+<dialog class="modal"><div class="panel"><button class="btn" data-close>Close</button><div class="content"></div></div></dialog>
+{% endblock %}

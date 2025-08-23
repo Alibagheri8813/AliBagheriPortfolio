@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Contact — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<section class="section post">
+  <h1>Contact</h1>
+  <p class="sub">I'd love to hear from you. I'll respond quickly.</p>
+  <form id="contact-form" method="post" novalidate>
+    {% csrf_token %}
+    <label>Name <input name="name" required aria-required="true" maxlength="120"></label>
+    <label>Email <input name="email" type="email" required aria-required="true"></label>
+    <label>Message <textarea name="message" rows="5" required aria-required="true"></textarea></label>
+    <input type="hidden" name="recaptcha_token" value="">
+    <button class="btn" type="submit">Send</button>
+  </form>
+  <p id="contact-message" role="status" aria-live="polite" style="margin-top:8px;"></p>
+</section>
+{% endblock %}

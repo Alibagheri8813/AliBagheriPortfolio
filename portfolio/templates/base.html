@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}Premium portfolio by a high‑performing student creator.{% endblock %}">
+  <link rel="canonical" href="https://{{ SITE_DOMAIN }}{{ request.path }}">
+  <meta property="og:title" content="{% block og_title %}{{ SITE_NAME }}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Premium portfolio by a high‑performing student creator.{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://{{ SITE_DOMAIN }}{{ request.path }}">
+  <meta property="og:image" content="{% static 'img/placeholder1.svg' %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block tw_title %}{{ SITE_NAME }}{% endblock %}">
+  <meta name="twitter:description" content="{% block tw_description %}Premium portfolio by a high‑performing student creator.{% endblock %}">
+
+  <link rel="icon" href="{% static 'icons/favicon.svg' %}" type="image/svg+xml">
+  <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+
+  <style>
+    /* Inline critical CSS */
+    .header{position:sticky;top:0;z-index:40;backdrop-filter:saturate(180%) blur(10px);background:rgba(12,16,28,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:1140px;margin:0 auto}
+    .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.1;margin:0;letter-spacing:-.02em;background:linear-gradient(90deg,#7c3aed,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  </style>
+  <link rel="preload" as="style" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" media="all">
+  {% block extra_head %}{% endblock %}
+  {% block extra_json_ld %}{% endblock %}
+  {% include "partials/jsonld_site.html" %}
+</head>
+<body data-ga="{{ GA_MEASUREMENT_ID|default:'' }}" {% block body_attrs %}{% endblock %}>
+  {% include "partials/header.html" %}
+  <main id="main" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+  {% include "partials/footer.html" %}
+  {% include "partials/analytics.html" %}
+  <script defer src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

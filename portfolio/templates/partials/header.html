@@ -1,0 +1,13 @@
+<header class="header" role="banner">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="/"><strong>{{ SITE_NAME }}</strong></a>
+    <div class="links" role="navigation">
+      <a href="/projects/" class="{% if request.resolver_match.url_name == 'projects' %}active{% endif %}">Projects</a>
+      <a href="/blog/" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">Blog</a>
+      <a href="/about/" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About</a>
+      <a href="/resume/" class="{% if request.resolver_match.url_name == 'resume' %}active{% endif %}">Resume</a>
+      <a href="/contact/" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">Contact</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+    </div>
+  </nav>
+</header>

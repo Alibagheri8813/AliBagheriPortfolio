@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Blog — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<section class="section">
+  <h1>Blog</h1>
+  <form method="get" role="search" style="margin:10px 0;">
+    <input name="q" value="{{ q }}" placeholder="Search posts..." aria-label="Search posts">
+    <button class="btn">Search</button>
+  </form>
+  <div class="grid">
+    {% for p in posts %}
+    <a class="card" href="{{ p.get_absolute_url }}">
+      <div class="title">{{ p.title }}</div>
+      <div class="meta">{{ p.summary }} • {{ p.reading_time_minutes }} min read</div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
