@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — Blog{% endblock %}
+{% block content %}
+<article class="post">
+  <header>
+    <h1>{{ post.title }}</h1>
+    <p class="meta">{{ post.published_at|date:"M d, Y" }} • {{ post.reading_time_minutes }} min read</p>
+  </header>
+  {% if post.image %}
+  <img class="hero" src="{{ post.image }}" alt="{{ post.title }}" loading="eager">
+  {% endif %}
+  <div class="content">{{ post.content|linebreaks }}</div>
+</article>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ post.title|escapejs }}",
+  "datePublished": "{{ post.published_at|date:'c' }}",
+  "image": "{{ post.image }}",
+  "author": {"@type": "Person", "name": "High Performing Creator"}
+}
+</script>
+{% endblock %}

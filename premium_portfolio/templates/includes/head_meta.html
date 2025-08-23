@@ -1,0 +1,32 @@
+{# SEO & Social #}
+<link rel="canonical" href="{{ CANONICAL_URL }}">
+<meta name="description" content="A premium portfolio showcasing projects, design/dev skills, blog, and case studies.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{% block og_title %}{% block title %}Premium Portfolio{% endblock %}{% endblock %}">
+<meta property="og:description" content="A premium portfolio showcasing projects, design/dev skills, blog, and case studies.">
+<meta property="og:url" content="{{ CANONICAL_URL }}">
+<meta property="og:image" content="{% static 'icons/logo.svg' %}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% block twitter_title %}{% block title %}Premium Portfolio{% endblock %}{% endblock %}">
+<meta name="twitter:description" content="A premium portfolio showcasing projects, design/dev skills, blog, and case studies.">
+<meta name="twitter:image" content="{% static 'icons/logo.svg' %}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "High Performing Creator",
+  "url": "{{ CANONICAL_URL }}",
+  "sameAs": [
+    "https://github.com/", "https://www.linkedin.com/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Premium Portfolio",
+  "url": "{{ CANONICAL_URL }}",
+  "logo": "{% static 'icons/logo.svg' %}"
+}
+</script>

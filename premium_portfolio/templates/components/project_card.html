@@ -1,0 +1,12 @@
+<article class="card project" data-slug="{{ project.slug }}">
+  <a class="cover" href="{{ project.get_absolute_url }}" data-case-link>
+    <img src="{{ project.image }}" alt="{{ project.title }}" loading="lazy" decoding="async">
+  </a>
+  <div class="body">
+    <h3><a href="{{ project.get_absolute_url }}" data-case-link>{{ project.title }}</a></h3>
+    <p class="muted">{{ project.excerpt|truncatechars:140 }}</p>
+    <div class="tags">
+      {% for t in project.tags.all %}<a class="tag" href="/projects/?tag={{ t.slug }}">#{{ t.name }}</a>{% endfor %}
+    </div>
+  </div>
+</article>

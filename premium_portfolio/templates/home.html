@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Premium Portfolio — Creator, Developer & Designer{% endblock %}
+{% block content %}
+<section class="hero" aria-labelledby="htitle">
+  <h1 id="htitle">Building delightful software and experiences.</h1>
+  <p>I’m a 17‑year‑old creator crafting premium digital products: full‑stack apps, design systems, and interactive stories.</p>
+  <form class="search" action="/search/" method="get" role="search">
+    <label for="q" class="sr-only">Search</label>
+    <input id="q" name="q" type="search" placeholder="Search projects and posts" />
+    <button class="btn" type="submit">Search</button>
+  </form>
+</section>
+
+<section aria-labelledby="projects-title">
+  <h2 id="projects-title">Featured Projects</h2>
+  <div class="grid">
+    {% for p in featured_projects %}
+      {% include "components/project_card.html" with project=p %}
+    {% empty %}
+      <p>No projects yet.</p>
+    {% endfor %}
+  </div>
+  <p><a class="btn btn-outline" href="/projects/">Browse all projects</a></p>
+</section>
+
+<section aria-labelledby="blog-title">
+  <h2 id="blog-title">Latest Posts</h2>
+  <div class="grid">
+    {% for post in latest_posts %}
+      {% include "components/post_card.html" with post=post %}
+    {% empty %}
+      <p>No posts yet.</p>
+    {% endfor %}
+  </div>
+  <p><a class="btn btn-outline" href="/blog/">Read the blog</a></p>
+</section>
+
+<section aria-labelledby="skills-title">
+  <h2 id="skills-title">Skills</h2>
+  <div class="skills">
+    {% for s in skills %}
+      <div class="skill" role="group" aria-label="{{ s.name }}">
+        <span class="label">{{ s.name }}</span>
+        <div class="bar" aria-hidden="true"><span style="width: {{ s.level }}%"></span></div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section aria-labelledby="testimonials-title">
+  <h2 id="testimonials-title">Testimonials</h2>
+  <div class="testimonials">
+    {% for t in testimonials %}
+      <blockquote>
+        <p>“{{ t.quote }}”</p>
+        <footer>— {{ t.author }}{% if t.role %}, <span class="muted">{{ t.role }}</span>{% endif %}</footer>
+      </blockquote>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
