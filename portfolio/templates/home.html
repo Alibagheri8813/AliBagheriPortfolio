@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}{{ SITE_NAME }} — Developer/Designer{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Crafting useful software and delightful interfaces</h1>
+  <p>I'm Alex, a 17‑year‑old developer/designer focused on quality, speed, and accessibility.</p>
+  <form action="/search/" role="search" aria-label="Search" style="margin-top:16px;">
+    <input id="search" name="q" type="search" placeholder="Search projects or posts" aria-label="Search" />
+    <div id="search-results" aria-live="polite" style="margin-top:8px;"></div>
+  </form>
+</section>
+
+<section class="section">
+  <h2>Featured Projects</h2>
+  <div class="grid">
+    {% for p in featured_projects %}
+    <a class="card" href="{{ p.get_absolute_url }}" data-project-slug="{{ p.slug }}" data-url="{{ p.get_absolute_url }}" aria-label="Open {{ p.title }}">
+      <img src="{{ p.hero_image_url }}" alt="{{ p.title }} preview" loading="lazy" decoding="async" />
+      <div class="title">{{ p.title }}</div>
+      <div class="meta">{{ p.summary }}</div>
+      <div class="meta">
+        {% for t in p.tags.all %}<span class="badge">{{ t.name }}</span>{% endfor %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Latest Posts</h2>
+  <div class="grid">
+    {% for post in latest_posts %}
+    <a class="card" href="{{ post.get_absolute_url }}">
+      <div class="title">{{ post.title }}</div>
+      <div class="meta">{{ post.summary }} • {{ post.reading_time_minutes }} min read</div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Testimonials</h2>
+  <p class="sub">Kind words from collaborators</p>
+  <div class="grid">
+    {% for t in testimonials %}
+    <div class="card">
+      “{{ t.content }}”
+      <div class="meta">— {{ t.author_name }}, {{ t.role }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section">
+  <h2>Skills</h2>
+  <div class="skills">
+    {% for s in skills %}
+    <div class="skill">
+      <div>{{ s.name }} <span class="meta">({{ s.category }})</span></div>
+      <div class="bar"><span data-w="{{ s.proficiency }}"></span></div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}About — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<section class="section">
+  <h1>About</h1>
+  <p>I'm Alex, a student developer/designer focused on making premium, fast, accessible products.</p>
+  <img src="{% static 'img/avatar.svg' %}" alt="Alex avatar" width="96" height="96">
+  <h2>Education & Awards</h2>
+  <ul>
+    <li>High School Honors, STEM Focus</li>
+    <li>Hackathon Finalist, 2024</li>
+    <li>Design Challenge Winner, 2023</li>
+  </ul>
+  <h2>Timeline</h2>
+  <p>Built first app at 14 → Freelance design at 15 → Open‑source at 16 → Internships at 17.</p>
+</section>
+{% endblock %}

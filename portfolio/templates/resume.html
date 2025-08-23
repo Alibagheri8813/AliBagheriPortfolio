@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Resume — {{ SITE_NAME }}{% endblock %}
+{% block content %}
+<section class="section post">
+  <h1>Resume</h1>
+  <p class="sub">Download a PDF using the button below (uses print‑to‑PDF for perfect typography).</p>
+  <p><a href="/static/docs/resume.pdf" class="btn">Download PDF (placeholder)</a></p>
+  <button class="btn" onclick="window.print()">Export to PDF</button>
+  <div class="content" style="margin-top:16px;">
+    <h2>Alex Doe</h2>
+    <p>Developer / Designer • alex@example.com</p>
+    <h3>Experience</h3>
+    <ul>
+      <li>Freelance Developer/Designer (2022–Present)</li>
+      <li>Intern — Product Design (Summer 2024)</li>
+    </ul>
+    <h3>Skills</h3>
+    <p>Python, Django, JS, CSS, Figma, Accessibility, Performance</p>
+    <h3>Projects</h3>
+    <p>See <a href="/projects/">projects</a> for details and case studies.</p>
+  </div>
+</section>
+{% endblock %}

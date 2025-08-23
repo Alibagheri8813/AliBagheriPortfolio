@@ -1,0 +1,32 @@
+{% load static %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alex Doe",
+  "url": "https://{{ SITE_DOMAIN }}/",
+  "jobTitle": "Developer & Designer"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Alex Doe Studio",
+  "url": "https://{{ SITE_DOMAIN }}/",
+  "logo": "https://{{ SITE_DOMAIN }}{% static 'icons/favicon.svg' %}"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ SITE_NAME }}",
+  "url": "https://{{ SITE_DOMAIN }}/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://{{ SITE_DOMAIN }}/search/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>

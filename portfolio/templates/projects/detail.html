@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load portfolio_extras %}
+{% block title %}{{ project.title }} — {{ SITE_NAME }}{% endblock %}
+{% block extra_json_ld %}
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "CreativeWork",
+ "name": "{{ project.title|escapejs }}",
+ "description": "{{ project.summary|escapejs }}",
+ "url": "https://{{ SITE_DOMAIN }}{{ project.get_absolute_url }}"
+}
+</script>
+{% endblock %}
+{% block content %}
+<section class="section post">
+  {% include "partials/breadcrumbs.html" with trail="<li><a href='/projects/'>Projects</a></li><li aria-current='page'>Detail</li>" %}
+  <h1>{{ project.title }}</h1>
+  <p class="meta">{{ project.summary }}</p>
+  <div class="lightbox">
+    {% for img in project.images.all %}
+      <img src="{{ img.image_url }}" alt="{{ img.caption }}" loading="lazy" decoding="async" data-lightbox>
+    {% endfor %}
+  </div>
+  <div class="content">{{ project.content|markdown_safe|safe }}</div>
+  <div class="meta">Roles: {{ project.roles }} • Tools: {{ project.tools }}</div>
+</section>
+{% endblock %}

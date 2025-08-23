@@ -1,0 +1,9 @@
+{% load portfolio_extras %}
+<h2>{{ project.title }}</h2>
+<p class="meta">{{ project.summary }}</p>
+<div class="lightbox">
+  {% for img in project.images.all %}
+    <img src="{{ img.image_url }}" alt="{{ img.caption }}" loading="lazy" decoding="async" data-lightbox>
+  {% endfor %}
+</div>
+<div class="content">{{ project.content|markdown_safe|safe }}</div>
