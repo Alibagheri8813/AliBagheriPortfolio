@@ -1,0 +1,1 @@
+web: gunicorn premium_portfolio.wsgi:application --log-file -
