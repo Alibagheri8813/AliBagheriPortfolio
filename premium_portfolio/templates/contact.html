@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Contact — Premium Portfolio{% endblock %}
+{% block content %}
+<h1>Contact</h1>
+<form id="contactForm" action="/api/contact/" method="post" class="form">
+  {% csrf_token %}
+  <div>
+    <label for="id_name">Name</label>
+    <input id="id_name" name="name" type="text" required>
+  </div>
+  <div>
+    <label for="id_email">Email</label>
+    <input id="id_email" name="email" type="email" required>
+  </div>
+  <div>
+    <label for="id_subject">Subject</label>
+    <input id="id_subject" name="subject" type="text" required>
+  </div>
+  <div>
+    <label for="id_message">Message</label>
+    <textarea id="id_message" name="message" rows="5" required></textarea>
+  </div>
+  <input type="hidden" name="recaptcha_token" id="recaptcha_token" value="">
+  <button class="btn" type="submit">Send</button>
+</form>
+<div id="contactStatus" role="status" aria-live="polite" class="muted"></div>
+{% endblock %}

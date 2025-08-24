@@ -1,0 +1,14 @@
+{% if GA_MEASUREMENT_ID %}
+<script>
+(function(){
+  function loadGA(){
+    if(!document.getElementById('ga-script')){
+      const s=document.createElement('script'); s.id='ga-script'; s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id={{ GA_MEASUREMENT_ID }}'; document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} window.gtag=gtag; gtag('js', new Date()); gtag('config', '{{ GA_MEASUREMENT_ID }}');
+    }
+  }
+  if(document.documentElement.dataset.consent==='accepted'){ loadGA(); }
+  else{ document.addEventListener('click', function once(){ if(document.documentElement.dataset.consent==='accepted'){ loadGA(); document.removeEventListener('click', once); } }, {capture:true}); }
+})();
+</script>
+{% endif %}

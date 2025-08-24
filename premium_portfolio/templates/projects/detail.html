@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} — Project Case Study{% endblock %}
+{% block content %}
+<article class="case">
+  <header>
+    <h1>{{ project.title }}</h1>
+    <p class="muted">{{ project.excerpt }}</p>
+  </header>
+  <img class="hero" src="{{ project.image }}" alt="{{ project.title }}" loading="eager">
+  <section class="meta">
+    <div><strong>Roles:</strong> {{ project.roles }}</div>
+    <div><strong>Tools:</strong> {{ project.tools }}</div>
+    <div class="tags">{% for t in project.tags.all %}<a class="tag" href="/projects/?tag={{ t.slug }}">#{{ t.name }}</a>{% endfor %}</div>
+  </section>
+  <section class="content">{{ project.content|linebreaks }}</section>
+  {% if project.images.all %}
+  <section class="gallery" aria-label="Gallery">
+    {% for img in project.images.all %}
+      <a href="{{ img.image }}" data-lightbox><img src="{{ img.image }}" alt="{{ img.alt_text }}" loading="lazy"></a>
+    {% endfor %}
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

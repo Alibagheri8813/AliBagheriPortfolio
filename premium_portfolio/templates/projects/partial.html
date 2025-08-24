@@ -1,0 +1,12 @@
+<article class="case" data-partial>
+  <header>
+    <h2 id="caseTitle">{{ project.title }}</h2>
+    <p class="muted">{{ project.excerpt }}</p>
+  </header>
+  <img class="hero" src="{{ project.image }}" alt="{{ project.title }}" loading="eager">
+  <section class="meta">
+    <div><strong>Roles:</strong> {{ project.roles }}</div>
+    <div><strong>Tools:</strong> {{ project.tools }}</div>
+  </section>
+  <section class="content">{{ project.content|linebreaks }}</section>
+</article>

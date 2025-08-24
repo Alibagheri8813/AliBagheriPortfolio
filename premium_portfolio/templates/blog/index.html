@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Blog — Premium Portfolio{% endblock %}
+{% block content %}
+<header>
+  <h1>Blog</h1>
+  <div class="filters" role="toolbar" aria-label="Post filters">
+    <a class="tag {% if not active_tag %}active{% endif %}" href="/blog/">All</a>
+    {% for t in tags %}
+      <a class="tag {% if active_tag == t.slug %}active{% endif %}" href="/blog/?tag={{ t.slug }}">#{{ t.name }}</a>
+    {% endfor %}
+  </div>
+</header>
+<div class="grid">
+  {% for post in posts %}
+    {% include "components/post_card.html" with post=post %}
+  {% empty %}
+    <p>No posts yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

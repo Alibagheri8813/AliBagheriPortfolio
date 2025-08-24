@@ -1,0 +1,21 @@
+<div id="consentBanner" class="consent" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <div class="container">
+    <p>We use analytics to improve this site. Do you consent to anonymous usage tracking?</p>
+    <div class="actions">
+      <button id="consentAccept" class="btn">Accept</button>
+      <button id="consentDecline" class="btn btn-outline">Decline</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const key = 'pp-consent';
+  const banner = document.getElementById('consentBanner');
+  const accepted = localStorage.getItem(key);
+  if(!accepted){ banner.hidden = false; }
+  function set(val){ localStorage.setItem(key, val); banner.hidden = true; document.documentElement.dataset.consent = val; }
+  document.getElementById('consentAccept').addEventListener('click',()=>set('accepted'));
+  document.getElementById('consentDecline').addEventListener('click',()=>set('declined'));
+  if(accepted){ document.documentElement.dataset.consent = accepted; }
+})();
+</script>

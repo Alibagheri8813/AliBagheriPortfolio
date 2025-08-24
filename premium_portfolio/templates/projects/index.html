@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Projects — Premium Portfolio{% endblock %}
+{% block content %}
+<header>
+  <h1>Projects</h1>
+  <div class="filters" role="toolbar" aria-label="Project filters">
+    <a class="tag {% if not active_tag %}active{% endif %}" href="/projects/">All</a>
+    {% for t in tags %}
+      <a class="tag {% if active_tag == t.slug %}active{% endif %}" href="/projects/?tag={{ t.slug }}">#{{ t.name }}</a>
+    {% endfor %}
+  </div>
+</header>
+<div class="grid" id="projectsGrid">
+  {% for project in projects %}
+    {% include "components/project_card.html" with project=project %}
+  {% empty %}
+    <p>No projects yet.</p>
+  {% endfor %}
+</div>
+<div id="caseModal" class="modal" hidden aria-hidden="true" aria-labelledby="caseTitle" role="dialog"></div>
+{% endblock %}
