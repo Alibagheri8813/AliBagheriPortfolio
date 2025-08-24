@@ -1,0 +1,1 @@
+This directory holds your resume file. Place your PDF at: static/resume/resume.pdf
